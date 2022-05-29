@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block marca %}
+{% if marca %}
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Editar/Eliminar</th>
+    </tr>
+  </thead>
+  {% for i in marca %}
+      
+      <tbody>
+          <tr class="table-dark">
+            <th scope="row">{{i.id}}</th>
+            <td>{{i.nombre}}</td>
+            <td>
+              <a href="{% url 'mupdate' i.id %}" class="btn btn-primary">Editar</a>
+              <a href="{% url 'mdelete' i.id %}" class="btn btn-primary">Eliminar</a>
+          </td>
+          </tr>
+      </tbody>
+  
+  {% endfor %}
+</table>
+{% else %}
+<h1>No Existen Registros</h1>
+{% endif %}
+
+<a href="{% url 'mcreate' %}" class="btn btn-primary">AÑADIR</a>
+  
+{% endblock marca %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block vehiculoventas %}
+
+{% if vehiculoventas %}
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Ventas ID</th>
+      <th scope="col">vehiculo ID</th>
+      <th scope="col">Editar/Eliminar</th>
+    </tr>
+  </thead>
+  {% for i in vehiculoventas %}
+      
+      <tbody>
+          <tr class="table-dark">
+            <th scope="row">{{i.id}}</th>
+            <td>{{i.ventasid}}</td>
+            <td>{{i.vehiculoid}}</td>
+            <td>
+              <a href="{% url 'vehupdate' i.id %}" class="btn btn-primary">Editar</a>
+              <a href="{% url 'vehdelete' i.id %}" class="btn btn-primary">Eliminar</a>
+          </td>
+          </tr>
+      </tbody>
+  {% endfor %}
+</table>
+{% else %}
+<h1>No Existen Registros</h1>
+{% endif %}
+
+<a href="{% url 'vehcreate' %}" class="btn btn-primary">AÑADIR</a>
+  
+{% endblock vehiculoventas %}

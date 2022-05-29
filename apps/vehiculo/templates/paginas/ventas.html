@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block ventas %}
+
+
+{% if ventas %}
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Valor Total</th>
+      <th scope="col">Tipo de pago</th>
+      <th scope="col">Usuarioid</th>
+      <th scope="col">Vehiculo</th>
+      <th scope="col">Editar/Eliminar</th>
+      
+
+    </tr>
+  </thead>
+  {% for i in ventas %}
+      
+      <tbody>
+          <tr class="table-dark">
+            <th scope="row">{{i.id}}</th>
+            <td>{{i.fecha}}</td>
+            <td>{{i.valortotal}}</td>
+            <td>{{i.tipopago}}</td>
+            <td>{{i.usuarioid}}</td>
+            <td>{{i.vehiculo}}</td>
+            <td>
+              <a href="{% url 'ventupdate' i.id %}" class="btn btn-primary">Editar</a>
+              <a href="{% url 'ventdelete' i.id %}" class="btn btn-primary">Eliminar</a>
+          </td>
+          </tr>
+          
+      </tbody>
+  
+  {% endfor %}
+</table>
+{% else %}
+<h1>No Existen Registros</h1>
+{% endif %}
+
+<a href="{% url 'ventcreate' %}" class="btn btn-primary">AÑADIR</a>
+  
+{% endblock ventas %}

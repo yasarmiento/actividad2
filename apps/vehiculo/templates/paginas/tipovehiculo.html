@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block tipovehiculo %}
+
+
+{% if tipovehiculo %}
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Editar/Eliminar</th>
+    </tr>
+  </thead>
+  {% for i in tipovehiculo %}
+      
+      <tbody>
+          <tr class="table-dark">
+            <th scope="row">{{i.id}}</th>
+            <td>{{i.nombre}}</td>
+            <td>
+              <a href="{% url 'tvupdate' i.id %}" class="btn btn-primary">Editar</a>
+              <a href="{% url 'tvdelete' i.id %}" class="btn btn-primary">Eliminar</a>
+          </td>
+          </tr>
+          
+      </tbody>
+  
+  {% endfor %}
+</table>
+{% else %}
+<h1>No Existen Registros</h1>
+{% endif %}
+
+<a href="{% url 'tvcreate' %}" class="btn btn-primary">AÑADIR</a>
+  
+{% endblock tipovehiculo %}
